@@ -5,15 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.liuying.jacokebase.R
+import com.liuying.jacokebase.base.BaseFragment
 import com.liuying.jacokebase.utils.LYLog
 
 /**
  * Created by liuying on 6/22/21 16:20.
  * Email: ly1203575492@163.com
  */
-class BFragment : Fragment() {
+class BFragment : BaseFragment() {
   override fun onAttach(context: Context) {
     super.onAttach(context)
     LYLog.log("BF onAttach")

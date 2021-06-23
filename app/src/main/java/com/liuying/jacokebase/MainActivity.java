@@ -2,12 +2,12 @@ package com.liuying.jacokebase;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import com.liuying.jacokebase.activity.LifecycleAActivity;
 import com.liuying.jacokebase.activity.MTestActivity;
+import com.liuying.jacokebase.base.BaseActivity;
 import com.liuying.jacokebase.model.JetpacketViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.liuying.jacokebase.R
+import com.liuying.jacokebase.base.BaseActivity
 import com.liuying.jacokebase.model.ProjectViewModel
 import com.liuying.jacokebase.utils.JsonUtil
 import kotlinx.android.synthetic.main.activity_test.*
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_test.*
  * Created by liuying on 6/10/21 17:29.
  * Email: ly1203575492@163.com
  */
-class MTestActivity : AppCompatActivity() {
+class MTestActivity : BaseActivity() {
   private lateinit var prjModel: ProjectViewModel
 
   override fun onCreate(savedInstanceState: Bundle?) {

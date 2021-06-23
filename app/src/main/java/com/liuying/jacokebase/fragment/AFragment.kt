@@ -6,16 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.liuying.jacokebase.R
+import com.liuying.jacokebase.base.BaseFragment
 import com.liuying.jacokebase.info.ProjectTree
+import com.liuying.jacokebase.model.JetpacketViewModel
+import com.liuying.jacokebase.model.ProjectViewModel
 import com.liuying.jacokebase.utils.JsonUtil
 import com.liuying.jacokebase.utils.LYLog
+import java.time.Duration
 
 /**
  * Created by liuying on 6/22/21 16:20.
  * Email: ly1203575492@163.com
  */
-class AFragment : Fragment() {
+class AFragment : BaseFragment() {
   override fun onAttach(context: Context) {
     super.onAttach(context)
     LYLog.log("AF onAttach")
@@ -34,6 +40,8 @@ class AFragment : Fragment() {
   }
 
   private fun initData() {
+    var model = ViewModelProviders.of(this).get(ProjectViewModel::class.java)
+
     //invoke
     val lambda = { left: Int, right: Int
       ->
@@ -41,6 +49,10 @@ class AFragment : Fragment() {
     }
     println("invoke:" + lambda.invoke(1, 2))
 
+    //action
+    val action = {
+      println(42)
+    }
 
     val student = run {
       mutableListOf<_TestInfo>().apply {
@@ -99,6 +111,27 @@ class AFragment : Fragment() {
     }.let { i0 ->
       println("let:" + JsonUtil.json2string(i0))
     }
+
+    //filter 过滤
+    data class SitVisit(val path: String, val duration: Double, val os: OS)
+
+    val log = listOf(
+        SitVisit("/", 34.0, OS.WINDOWS),
+        SitVisit("/log", 4.0, OS.IOS),
+        SitVisit("/signup", 3.0, OS.MAC),
+        SitVisit("/", 23.0, OS.ANDROID),
+        SitVisit("/", 12.0, OS.LINUX),
+        SitVisit("/", 11.0, OS.WINDOWS),
+    )
+    val logAverage = log.filter { it.os == OS.WINDOWS }.map(SitVisit::duration).average()
+    println("过滤：$logAverage")
+
+
+    arrayOf(1, 2, 3).map { i: Int -> i * 10 }.forEach(::println)
+
+    val any: Any = 100
+    println("any:" + any.javaClass)
+
   }
 
   class _TestInfo {
@@ -147,5 +180,6 @@ class AFragment : Fragment() {
     LYLog.log("AF onDestroy")
   }
 
+  enum class OS { WINDOWS, LINUX, MAC, IOS, ANDROID }
 
 }
