@@ -46,4 +46,49 @@ fun test(name:String,sex:Int){
      }
 
 ```
+
+   * 局部函数 kotlin支持在函数中嵌套函数，被嵌套的函数称为局部函数
+   
+   ### kotlin中的表达式跟条件循环
+   
+   * 语句是指可单独运行，能够产生实际效果的代码。
+   * 表达式可以是一个值、变量、常量、操作符、或者他们之间的组合。可以认为是包含返回值的语句。
+   * if 表达式 if可以是代码块，作为表达式的返回值
+
+   ```
+    val max = if(12>10){
+        println("max value = 12")
+        12    
+    }else{
+        println("maxValue = 10")
+        10
+    }
+    println(max)
+```
+   
+   * when表达式 等价于Java中的switch/case 。但是功能上要比Java的强大的多。when可以当做表达式使用也可以被当做语句使用。
+  ```js
+    val value =2 
+    when(value){
+    in 4..9 -> println("in 4..9")//区间判断
+    3 -> println("value is 3")//相等性判断
+    2,6 -> println("value is 2 or 6")//多值相等性判断
+    is Int -> println("is Int")//类型判断
+    else -> println("else") //以上条件都不满足    
+    
+    //表达式
+    fun parser(obj:Any):Stirng{
+        when(obj){
+            1 -> "value is 1"
+            "4" -> "value is String 4"
+            is Long -> "value type is Long"
+            else -> "unknown"
+        }
+    }
+    println(parser("1"))
+
+}
+```
+
+   *  
     
