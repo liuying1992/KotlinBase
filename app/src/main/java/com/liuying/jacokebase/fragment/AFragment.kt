@@ -36,6 +36,12 @@ class AFragment : BaseFragment() {
       savedInstanceState: Bundle?): View? {
     LYLog.log("AF onCreateView")
     initData()
+    val view = MyView()
+    view.setClickListener(object : OnClickListener {
+      override fun onClick() {
+
+      }
+    })
     return inflater.inflate(R.layout.fragment_a, container, false)
   }
 
@@ -132,6 +138,19 @@ class AFragment : BaseFragment() {
     val any: Any = 100
     println("any:" + any.javaClass)
 
+
+//    返回表达式
+    val list = listOf(1, 2, 3, 4, 5, 6, 7)
+    test@ for (index in list) {
+      if (index == 2) {
+        continue
+      }
+      if (index == 4) {
+        break@test
+      }
+      println("value is $index")
+    }
+
   }
 
   class _TestInfo {
@@ -181,5 +200,33 @@ class AFragment : BaseFragment() {
   }
 
   enum class OS { WINDOWS, LINUX, MAC, IOS, ANDROID }
+
+
+  interface OnChangeListener {
+    fun onChange()
+  }
+
+  enum class Day(val index: Int) : OnChangeListener {
+    SUNDAY(0) {
+      override fun onChange() {
+
+      }
+    },
+    MONDAY(1) {
+      override fun onChange() {
+
+      }
+    }
+  }
+
+  interface OnClickListener {
+    fun onClick()
+  }
+
+  class MyView {
+    fun setClickListener(clickListener: OnClickListener) {
+    }
+  }
+
 
 }
