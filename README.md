@@ -273,6 +273,47 @@ calss Minute(private val count:Int){
   * 抽象方法与默认方法
   * 抽象属性 接口中可以包含抽象属性声明，接口不定义该抽象属性是应该存储到一个支持字段还是通过getter来获取，接口本身并不包含
     任何状态，因此只有实现这个接口的类在需要的情况下才会存储这个值。
+    
+  ### 继承 
+  * 需要使用关键字 `open` 显示标注可覆盖的成员和覆盖后的成员
+  * 属性覆盖：与方法覆盖类似。在超类中声明为open的属性，如果需要覆盖则必须在派生类中重新声明且以override开头
+  ### 调用超类实现
+  * 派生类可以通过super关键字调用其超类的函数与属性访问器的实现，如果需要在内部类访问外部类的超类，则需要通过由外部类名限定
+    super关键字来实现。
+   ```js
+    open class Base{
+        open fun fun1(){
+            println("Base fun1")
+        }
+    }   
+    
+    class SubClass:Base(){
+        override fun fun1(){
+            println("subclass fun1")
+        }
+        
+        inner class InnerClass{
+            fun fun2(){
+                super@SubClass.fun1()
+            }
+        }
+    }
+```
+   ### 集合
+   * 只读集合与可变集合
+     kotlin 的集合设计和java不同的另一项特性是：kotlin把访问数据的接口和修改集合数据的接口分开了， `kotlin.collections.Collection`
+     接口提供了遍历集合元素、获取集合大小、判断集合是否包含某元素等操作，但这个接口没有提供集合添加和移除元素的方法。
+     `kotlin.collections.MutableCollection`接口继承于 `kotlin.collections.Collection`接口，扩展出了用于添加，移除，清空
+     元素的方法。
+     
+    | 集合元素 | 只读 | 可变 |
+    | ---- | ---- | ---- |
+    | List | listOf | mutableListOf、arrayListOf |
+    | Set | setOf | mutableSetOf、hashSetOf 、linkedSetOf、sortedSetOf |
+    | Map | mapOf | mutableMapOf、hashMapOf、linkedMapOf、sortedMapOf |
+      
+     
+     
    
    
    
