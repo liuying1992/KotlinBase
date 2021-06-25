@@ -306,11 +306,11 @@ calss Minute(private val count:Int){
      `kotlin.collections.MutableCollection`接口继承于 `kotlin.collections.Collection`接口，扩展出了用于添加，移除，清空
      元素的方法。
      
-    | 集合元素 | 只读 | 可变 |
-    | ---- | ---- | ---- |
-    | List | listOf | mutableListOf、arrayListOf |
-    | Set | setOf | mutableSetOf、hashSetOf 、linkedSetOf、sortedSetOf |
-    | Map | mapOf | mutableMapOf、hashMapOf、linkedMapOf、sortedMapOf |
+   | 集合元素 | 只读 | 可变 |
+   | ---- | ---- | ---- |
+   | List | listOf | mutableListOf、arrayListOf |
+   | Set | setOf | mutableSetOf、hashSetOf 、linkedSetOf、sortedSetOf |
+   | Map | mapOf | mutableMapOf、hashMapOf、linkedMapOf、sortedMapOf |
       
      
      
